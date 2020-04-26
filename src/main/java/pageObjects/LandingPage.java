@@ -5,13 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import resources.base;
-import utils.Servicesss;
-
-import static utils.Constants.WAIT_EXPLICIT_SEC;
-
-public class LandingPage extends base {
+import resources.BaseClass;
+import utils.Services;
+public class LandingPage extends BaseClass {
 
 	public static WebDriver driver;
 
@@ -35,7 +31,7 @@ public class LandingPage extends base {
 
 	public static void clickElement(WebDriver driver, By Xpath) {
 
-		Servicesss.clickElement(driver, Xpath);
+		Services.clickElement(driver, Xpath);
 
 	}
 
@@ -46,8 +42,8 @@ public class LandingPage extends base {
 
 	}
 
-	public static void sendData(WebDriver driver, By Xpath, String dataToSend) {
-		Servicesss.sendKeysbyXpath(driver, Xpath, dataToSend);
+	public static void sendData(WebDriver driver, By Xpath, String dataToSend) throws InterruptedException {
+		Services.sendKeysbyXpath(driver, Xpath, dataToSend);
 
 	}
 

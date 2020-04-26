@@ -1,26 +1,35 @@
 package stepDefination;
 
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+/*import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.And;
-import cucumber.api.junit.Cucumber;
+import cucumber.api.junit.Cucumber;*/
+import io.cucumber.junit.Cucumber;
 import pageObjects.ApplicationPage;
 import pageObjects.LandingPage;
-import resources.base;
+import resources.BaseClass;
+import utils.Services;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 @RunWith(Cucumber.class)
-public class StepDefination extends base {
-	
-	String currentPrice;
-	String currentQuantity;
+public class StepDefination extends BaseClass {
+
+	String strExistingPrice;
+	String strUpdatedPrice;
+	int intUpdatedPrice;
+	int existingQuantity;
+	float intExistingPrice;
 
 	@Given("^User is on landing page\"([^\"]*)\"$")
 	public void user_is_on_landing_pagesomething(String strArg1) throws Throwable {
-
 		driver = initializeDriver();
 		driver.get(strArg1);
 		driver.manage().window().maximize();
@@ -35,10 +44,10 @@ public class StepDefination extends base {
 
 	}
 
-	@Then("^Search a product \"([^\"]*)\"$")
-	public void search_a_product_something(String strArg1) throws Throwable {
+	@Then("^Search a product (.+)$")
+	public void search_a_product(String produtname) throws Throwable {
 		ApplicationPage.clickElement(driver, ApplicationPage.searchMaginifyIcon);
-		ApplicationPage.sendData(driver, ApplicationPage.searchTextField, strArg1);
+		ApplicationPage.sendData(driver, ApplicationPage.searchTextField, produtname);
 		WebElement enterAfterSearch = driver.findElement(ApplicationPage.searchTextField);
 		enterAfterSearch.sendKeys(Keys.ENTER);
 
@@ -46,7 +55,6 @@ public class StepDefination extends base {
 
 	@And("^Add \"([^\"]*)\" product into the cart$")
 	public void add_something_product_into_the_cart(String strArg1) throws Throwable {
-
 		ApplicationPage.wait(driver, ApplicationPage.prodList);
 		ApplicationPage.addCart(ApplicationPage.prodList, strArg1, driver);
 
@@ -59,62 +67,38 @@ public class StepDefination extends base {
 
 	}
 
-	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 	// Second TC
 	@Then("^Go to View Cart screen$")
 	public void go_to_view_cart_screen() throws Throwable {
-		
+
 		ApplicationPage.clickElement(driver, ApplicationPage.viewCartButton);
 
-		
 	}
 
+	@And("^Increase the quantity and verify price should get updated accordngly$")
+	public void increase_the_quantity_and_verify_price_should_get_updated_accordngly() throws Throwable {
 
-    @And("^Check the price for the current item$")
-    public void check_the_price_for_the_current_item() throws Throwable {
-	
-    	currentPrice=driver.findElement(ApplicationPage.currentPrice).getText();
-    	
+		strExistingPrice = driver.findElement(ApplicationPage.currentPrice).getText();
+		existingQuantity = Integer
+				.parseInt(driver.findElement(ApplicationPage.currentQuantity).getAttribute("data-quantity-item"));
 
-    	currentQuantity=driver.findElement(ApplicationPage.currentQuantity).getAttribute("data-quantity-item");
-    	System.out.println(currentPrice+"Check the price for the current item");
-    	System.out.println(currentQuantity+"Check the price for the current item");
+		intExistingPrice = Services.convertStrIntoFloat(strExistingPrice);
 
-    	
-  
-    
-    
-    }
-    
-    
-    @Then("^Increase the quantity and verify price should get updated accordngly$")
-    public void increase_the_quantity_and_verify_price_should_get_updated_accordngly() throws Throwable {
+		Thread.sleep(2000);
 
-    
-    	System.out.println(currentPrice+"Increase the quantity and verify price should get updated accordngly");
-    	System.out.println(currentQuantity+"Increase the quantity and verify price should get updated accordngly");
+		driver.findElement(ApplicationPage.currentQuantity).click();
+		driver.findElement(ApplicationPage.currentQuantity).clear();
+		int incrementQuantity = existingQuantity + 1;
 
-    	currentQuantity+=currentQuantity;
-    	System.out.println(currentQuantity+"@@@@@@@@@@");
-		ApplicationPage.sendData(driver, ApplicationPage.currentQuantity, currentQuantity);
+		driver.findElement(ApplicationPage.currentQuantity).sendKeys(String.valueOf(incrementQuantity));
+		Thread.sleep(3000);
 
-		Thread.sleep(5000);
-		
-		
-    	
-    	
-		
-		
-		
-		
-		
-    	
-    }
+		strUpdatedPrice = driver.findElement(ApplicationPage.currentPrice).getText();
+		intUpdatedPrice = Services.convertStrRoundInteger(strUpdatedPrice);
+		Assert.assertEquals(intUpdatedPrice,
+				Services.calculatePrice(existingQuantity, intExistingPrice, incrementQuantity));
+	}
 
-	
-
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	// Third TC
 
 	@Then("^Go to featured collection list$")
@@ -131,8 +115,8 @@ public class StepDefination extends base {
 
 	}
 
-	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
+//Fourth TC
+	
 	@And("^Add \"([^\"]*)\" product into the cart with multiple sizes$")
 	public void add_something_product_into_the_cart_with_multiple_sizes(String strArg1) throws Throwable {
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utils.Servicesss;
+import utils.Services;
 
 public class ApplicationPage {
 
@@ -44,7 +44,7 @@ public class ApplicationPage {
 
 	public static void clickElement(WebDriver driver, By Xpath) {
 
-		Servicesss.clickElement(driver, Xpath);
+		Services.clickElement(driver, Xpath);
 
 	}
 
@@ -55,21 +55,23 @@ public class ApplicationPage {
 
 	}
 
-	public static void sendData(WebDriver driver, By Xpath, String dataToSend) {
-		Servicesss.sendKeysbyXpath(driver, Xpath, dataToSend);
+	public static void sendData(WebDriver driver, By Xpath, String dataToSend) throws InterruptedException {
+		Services.sendKeysbyXpath(driver, Xpath, dataToSend);
 
 	}
 
+	
+
 	public static void addCart(By List, String Text, WebDriver driver) {
 
-		Servicesss.selectDataFromList(List, Text, driver);
-		Servicesss.clickElement(driver, addToCartButton);
+		Services.selectDataFromList(List, Text, driver);
+		Services.clickElement(driver, addToCartButton);
 
 	}
 
 	public static void addCart( WebDriver driver) {
 
-		Servicesss.clickElement(driver, addToCartButton);
+		Services.clickElement(driver, addToCartButton);
 
 	}
 	
@@ -77,22 +79,22 @@ public class ApplicationPage {
 	
 	public static void wait(WebDriver driver, By Xpath) {
 
-		Servicesss.waitForElementToBeClickable(driver, Xpath);
+		Services.waitForElementToBeClickable(driver, Xpath);
 
 	}
 
 	public static void goToFeaturedCollection(WebDriver driver, By Xpath) throws InterruptedException {
 
 		WebElement ele = getWebElement(driver, Xpath);
-		Servicesss.scrollDown(ele, driver);
+		Services.scrollDown(ele, driver);
 
 	}
 	
 
 	public static void addMulSize(By drpdwn, String value, By list, WebDriver driver ) throws InterruptedException {
 		
-		Servicesss.addMulItem(drpdwn, value, list, driver );
-		Servicesss.clickElement(driver, addToCartButton);
+		Services.addMulItem(drpdwn, value, list, driver );
+		Services.clickElement(driver, addToCartButton);
 
 	}
 	
@@ -101,7 +103,7 @@ public class ApplicationPage {
 
 	public static void closeBrowser(WebDriver driver) throws InterruptedException {
 
-		Servicesss.closeBrowser(driver);
+		Services.closeBrowser(driver);
 
 	}
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-04-26T19:36:24Z" name="Suite" finished-at="2020-04-26T19:38:10Z" duration-ms="106163">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@157632c9]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2020-04-26T19:36:24Z" name="BDD" finished-at="2020-04-26T19:38:10Z" duration-ms="106163">
+      <class name="cucumberOptions.TestRunner">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:06:24Z" name="setUpClass" finished-at="2020-04-27T01:06:25Z" duration-ms="562" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:06:25Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-04-27T01:06:51Z" duration-ms="25934" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search and add the same product to the cart"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Automation Shopify"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:06:51Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-04-27T01:07:21Z" duration-ms="30604" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Increase product quantity and validate the price"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Automation Shopify"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:07:21Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-04-27T01:07:44Z" duration-ms="23246" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add a product from the featured collection"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Automation Shopify"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:07:44Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-04-27T01:08:10Z" duration-ms="25775" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add to cart, products with multiple sizes"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Automation Shopify"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumberOptions.TestRunner@157632c9]" started-at="2020-04-27T01:08:10Z" name="tearDownClass" finished-at="2020-04-27T01:08:10Z" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- cucumberOptions.TestRunner -->
+    </test> <!-- BDD -->
+  </suite> <!-- Suite -->
+</testng-results>
